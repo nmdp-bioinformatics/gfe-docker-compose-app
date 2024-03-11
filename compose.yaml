@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+    gfe-db:
+        image: nmdpbioinformatics/gfe-db:3550
+        ports:
+            - "7474:7474"
+            - "7687:7687"
+        healthcheck:
+            test: ["CMD", "wget", "-t", "1", "http://localhost:7474"]
+            interval: 10s
+            timeout: 5s
+            retries: 10
+        environment:
+            NEO4J_PLUGINS: "[]"
+
+    gfe-web:
+        image: nmdpbioinformatics/gfe-service:2.0.1
+        ports:
+            - "8080:8080"
+        volumes:
+            - "./config:/app/config"
+        depends_on:
+            gfe-db:
+                condition: service_healthy
+        links:
+            - gfe-db 
+        restart: on-failure

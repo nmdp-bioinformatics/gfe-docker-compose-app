@@ -1,0 +1,4 @@
+---
+  user: "neo4j"
+  password: "graph-is-great"
+  neo4j_url: "bolt://gfe-db:7687"
