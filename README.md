@@ -1,4 +1,4 @@
-# GFE-DB on the go
+# GFE on the go
 
 
 1. Install [Docker Desktop](https://www.docker.com/products/docker-desktop/) or  [Rancher Desktop](https://rancherdesktop.io/)
